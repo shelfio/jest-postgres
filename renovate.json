@@ -1,8 +1,4 @@
 {
   "extends": ["config:base"],
-  "labels": ["dependencies", "backend"],
-  "ignoreDeps": [
-    "cimg/node",
-    "@types/node"
-  ]
+  "labels": ["dependencies", "backend"]
 }

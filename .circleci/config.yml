@@ -1,7 +1,7 @@
-orbs:
-  node: circleci/node@5.0.3
-
 version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
 
 parameters:
   node_version:
@@ -11,6 +11,7 @@ parameters:
 commands:
   install_deps:
     steps:
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - node/install-packages:
           pkg-manager: yarn
           cache-version: v1-all
@@ -27,6 +28,9 @@ jobs:
     steps:
       - checkout
       - install_deps
+      - run: yarn build
       - run: yarn test
-      - run: yarn type-check
+      - run: yarn test:repl
       - run: yarn lint:ci
+      - run: yarn type-check
+
