@@ -3,13 +3,13 @@ import {getClient} from './client';
 describe('#getClient', () => {
   const client = getClient({
     host: 'localhost',
-    port: 5432,
+    port: 5555,
     username: '',
     password: '',
     database: 'postgres',
   });
 
-  it('should insert records', async () => {
+  it('should use 5555 port and insert records', async () => {
     await client.withSchema('test').table('model1').insert({
       id: 'unique',
       type: 'some text',
