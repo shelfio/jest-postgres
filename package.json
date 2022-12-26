@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-postgres",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "description": "Run your tests using Jest & Postgres",
   "keywords": [
@@ -47,7 +47,7 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@shelf/postgres-local": "0.1.4",
+    "@shelf/postgres-local": "0.1.5",
     "cwd": "0.10.0",
     "debug": "4.3.4",
     "knex": "2.3.0",
