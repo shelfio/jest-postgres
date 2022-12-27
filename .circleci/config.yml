@@ -28,6 +28,7 @@ jobs:
     steps:
       - checkout
       - install_deps
+      - run: yarn build
       - run: sudo yarn test
       - run: yarn type-check
       - run: yarn lint:ci
