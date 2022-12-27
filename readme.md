@@ -2,7 +2,41 @@
 
 > Jest preset to run Postgres server
 
-## TO BE DONE
+## Usage
+
+### 0. Install
+
+```
+$ yarn add @shelf/jest-postgres --dev
+```
+
+### 1. Create `jest.config.js`
+
+```js
+module.exports = {
+  preset: '@shelf/jest-postgres'
+};
+```
+
+If you have a custom `jest.config.js` make sure you remove `testEnvironment` property, otherwise it will conflict with the preset.
+
+### 2. Create `jest-postgres-config.js`
+
+```js
+import cwd from 'cwd';
+
+module.exports = {
+  seedPath: `${cwd()}/test/seed.sql`,
+  version: 14,
+  port: 5555,
+};
+```
+Find `seed.sql` example in `./test` folder of this repo
+### 4. PROFIT! Write tests
+
+```js
+it();
+```
 
 ## See Also
 
