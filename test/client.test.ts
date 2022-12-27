@@ -1,4 +1,4 @@
-import {getClient} from './client';
+import {closeConnection, getClient} from './client';
 
 describe('#getClient', () => {
   const client = getClient({
@@ -29,5 +29,7 @@ describe('#getClient', () => {
         vector: null,
       },
     ]);
+
+    await closeConnection();
   });
 });
