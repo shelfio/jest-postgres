@@ -3,5 +3,6 @@ import cwd from 'cwd';
 
 module.exports = function stopPostgres() {
   const config = require(`${cwd()}/jest-postgres-config.js`);
-  stop(config);
+
+  return stop(config);
 };
