@@ -31,7 +31,7 @@ module.exports = {
   port: 5555,
 };
 ```
-Find `seed.sql` example in `./test` folder of this repo
+Find `seed.sql` example in `./test` folder of this repo, view [postgres-local](https://github.com/shelfio/postgres-local#1-start-postgres) for more params.
 ### 4. PROFIT! Write tests
 
 ```js
