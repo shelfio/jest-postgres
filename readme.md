@@ -2,6 +2,7 @@
 
 > Jest preset to run Postgres server
 
+[Test Postgres using only this jest plugin (no DB mocks/Docker)!](https://medium.com/shelf-io-engineering/test-postgres-using-jest-755389b28d22)
 ## Usage
 
 ### 0. Install
@@ -40,6 +41,8 @@ it();
 
 ## See Also
 
+- [postgres-local](https://github.com/shelfio/postgres-local)
+- [jest-elasticsearch](https://github.com/shelfio/jest-elasticsearch)
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
 
 ## Publish
