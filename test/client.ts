@@ -1,7 +1,7 @@
 import knex from 'knex';
 import type {Knex} from 'knex';
 
-let client: Knex<string, any>;
+let client: Knex<string, never>;
 let connected = false;
 
 export function getClient(params: {
@@ -10,7 +10,7 @@ export function getClient(params: {
   username: string;
   password: string;
   database: string;
-}): Knex<string, any> {
+}): Knex<string, never> {
   if (client && connected) {
     return client;
   }
