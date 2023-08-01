@@ -1,9 +1,9 @@
-import cwd from 'cwd';
 import {start} from '@shelf/postgres-local';
-
-const config = require(`${cwd()}/jest-postgres-config.js`);
+import {getConfig} from './config';
 
 module.exports = async function startPostgres() {
+  const config = getConfig();
+
   await start(config);
 
   return true;
