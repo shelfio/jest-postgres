@@ -3,6 +3,7 @@
 > Jest preset to run Postgres server
 
 [Test Postgres using only this jest plugin (no DB mocks/Docker)!](https://medium.com/shelf-io-engineering/test-postgres-using-jest-755389b28d22)
+
 ## Usage
 
 ### 0. Install
@@ -15,7 +16,7 @@ $ yarn add @shelf/jest-postgres --dev
 
 ```js
 module.exports = {
-  preset: '@shelf/jest-postgres'
+  preset: '@shelf/jest-postgres',
 };
 ```
 
@@ -32,11 +33,39 @@ module.exports = {
   port: 5555,
 };
 ```
+
 Find `seed.sql` example in `./test` folder of this repo, view [postgres-local](https://github.com/shelfio/postgres-local#1-start-postgres) for more params.
+
 ### 4. PROFIT! Write tests
 
 ```js
 it();
+```
+
+## Monorepo Support
+
+By default the `jest-postgres-config.js` is read from `cwd` directory, but this might not be
+suitable for monorepos with nested [jest projects](https://jestjs.io/docs/configuration#projects-arraystring--projectconfig)
+with nested `jest.config.*` files nested in subdirectories.
+
+If your `jest-postgres-config.js` file is not located at `{cwd}/jest-postgres-config.js` or you
+are using nested `jest projects`, you can define the environment variable `JEST_POSTGRES_CONFIG`
+with the absolute path of the respective `jest-postgres-config.js` file.
+
+### Example Using `JEST_POSTGRES_CONFIG` in nested project
+
+```js
+// src/nested/project/jest.config.js
+const path = require('path');
+
+// Define path of project level config - extension not required as file will be imported
+// via `require(process.env.JEST_POSTGRES_CONFIG)`
+process.env.JEST_POSTGRES_CONFIG = path.resolve(__dirname, './jest-postgres-config');
+
+module.exports = {
+  preset: '@shelf/jest-postgres'
+  displayName: 'nested-project',
+};
 ```
 
 ## See Also
