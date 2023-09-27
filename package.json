@@ -51,8 +51,8 @@
     "cwd": "0.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.15",
-    "@babel/core": "7.22.20",
+    "@babel/cli": "7.23.0",
+    "@babel/core": "7.23.0",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.26.0",
     "@shelf/prettier-config": "1.0.0",
