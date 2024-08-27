@@ -17,6 +17,7 @@
     "email": "dmytro.harazdovskyi@shelf.io",
     "url": "shelf.io"
   },
+  "type": "module",
   "files": [
     "jest-preset.js",
     "lib/"
