@@ -3,8 +3,6 @@
   "version": "1.2.3",
   "private": false,
   "description": "Run your tests using Jest & Postgres",
-  "type": "module",
-  "main": "./lib/index.cjs",
   "keywords": [
     "jest",
     "jest environment",
@@ -19,10 +17,7 @@
     "email": "dmytro.harazdovskyi@shelf.io",
     "url": "shelf.io"
   },
-  "files": [
-    "jest-preset.cjs",
-    "lib/"
-  ],
+  "type": "module",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
@@ -38,6 +33,11 @@
     },
     "./package.json": "./package.json"
   },
+  "main": "./lib/index.cjs",
+  "files": [
+    "jest-preset.cjs",
+    "lib/"
+  ],
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' --out-file-extension '.cjs'",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",

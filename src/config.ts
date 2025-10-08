@@ -10,13 +10,24 @@ const dynamicImport = new Function('specifier', 'return import(specifier);') as 
 
 export async function getConfig() {
   const projectRoot = cwd();
-  const fallbackPath =
-    DEFAULT_CONFIG_FILE_NAMES.map((fileName) => resolve(projectRoot, fileName)).find((filePath) =>
-      existsSync(filePath)
-    ) || resolve(projectRoot, DEFAULT_CONFIG_FILE_NAMES[0]);
+  const configPath = process.env.JEST_POSTGRES_CONFIG ?? findConfigPath(projectRoot);
 
-  const path = process.env.JEST_POSTGRES_CONFIG || fallbackPath;
+  return await loadConfig(configPath);
+}
 
+function findConfigPath(projectRoot: string) {
+  for (const fileName of DEFAULT_CONFIG_FILE_NAMES) {
+    const candidate = resolve(projectRoot, fileName);
+
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return resolve(projectRoot, DEFAULT_CONFIG_FILE_NAMES[0]);
+}
+
+async function loadConfig(path: string) {
   try {
     const config = require(path);
 
