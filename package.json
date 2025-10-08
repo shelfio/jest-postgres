@@ -1,8 +1,10 @@
 {
   "name": "@shelf/jest-postgres",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "description": "Run your tests using Jest & Postgres",
+  "type": "module",
+  "main": "./lib/index.cjs",
   "keywords": [
     "jest",
     "jest environment",
@@ -18,11 +20,26 @@
     "url": "shelf.io"
   },
   "files": [
-    "jest-preset.js",
+    "jest-preset.cjs",
     "lib/"
   ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.cjs",
+      "require": "./lib/index.cjs",
+      "default": "./lib/index.cjs"
+    },
+    "./jest-preset": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.cjs",
+      "require": "./lib/index.cjs",
+      "default": "./lib/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts'",
+    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' --out-file-extension '.cjs'",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "lint": "eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "eslint . --ext .js,.ts,.json",
@@ -44,7 +61,7 @@
   },
   "prettier": "@shelf/prettier-config",
   "jest": {
-    "preset": "./jest-preset.js"
+    "preset": "./jest-preset.cjs"
   },
   "dependencies": {
     "@shelf/postgres-local": "1.1.1",

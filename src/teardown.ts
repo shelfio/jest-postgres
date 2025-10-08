@@ -1,8 +1,8 @@
 import {stop} from '@shelf/postgres-local';
 import {getConfig} from './config';
 
-module.exports = function stopPostgres() {
-  const config = getConfig();
+module.exports = async function stopPostgres() {
+  const config = await getConfig();
 
-  stop(config);
+  await stop(config);
 };
