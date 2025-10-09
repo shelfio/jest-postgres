@@ -64,7 +64,7 @@
     "preset": "./jest-preset.cjs"
   },
   "dependencies": {
-    "@shelf/postgres-local": "1.1.1",
+    "@shelf/postgres-local": "1.1.2",
     "cwd": "0.10.0"
   },
   "devDependencies": {
