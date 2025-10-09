@@ -1,4 +1,4 @@
-import cwd from 'cwd';
+const cwd = require('cwd');
 
 module.exports = {
   seedPath: `${cwd()}/test/seed.sql`,

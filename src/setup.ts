@@ -2,7 +2,7 @@ import {start} from '@shelf/postgres-local';
 import {getConfig} from './config';
 
 module.exports = async function startPostgres() {
-  const config = getConfig();
+  const config = await getConfig();
 
   await start(config);
 
