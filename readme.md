@@ -8,8 +8,8 @@
 
 ### 0. Install
 
-```
-$ yarn add @shelf/jest-postgres --dev
+```sh
+pnpm add --save-dev --save-exact @shelf/jest-postgres
 ```
 
 ### 1. Create `jest.config.js`
@@ -31,10 +31,14 @@ module.exports = {
   seedPath: `${cwd()}/test/seed.sql`,
   version: 14,
   port: 5555,
+  includeInstallation: false,
+  debugMode: false,
 };
 ```
 
-Find `seed.sql` example in `./test` folder of this repo, view [postgres-local](https://github.com/shelfio/postgres-local#1-start-postgres) for more params.
+The preset starts and stops PostgreSQL and applies the optional seed file. Set `includeInstallation` to
+`true` to install the selected PostgreSQL version with Homebrew or apt. Set `debugMode` to `true` to
+stream command output. No separate local PostgreSQL package is required.
 
 > When your project itself uses CommonJS, you can keep using a `jest-postgres-config.js` file.
 > Starting with v1.2.3+, the preset prefers `jest-postgres-config.cjs` but will still fall back to the `.js`
@@ -85,17 +89,16 @@ still be picked up because the loader falls back to a dynamic `import()` when a 
 
 ## See Also
 
-- [postgres-local](https://github.com/shelfio/postgres-local)
 - [jest-elasticsearch](https://github.com/shelfio/jest-elasticsearch)
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
 
 ## Publish
 
 ```sh
-$ git checkout master
-$ yarn version
-$ yarn publish
-$ git push origin master --tags
+git checkout master
+pnpm version
+pnpm publish
+git push origin master --tags
 ```
 
 ## License

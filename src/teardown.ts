@@ -1,8 +1,8 @@
-import {stop} from '@shelf/postgres-local';
 import {getConfig} from './config';
+import {stopPostgres as stopPostgresRuntime} from './postgres';
 
-module.exports = async function stopPostgres() {
+module.exports = async function teardownPostgres() {
   const config = await getConfig();
 
-  await stop(config);
+  stopPostgresRuntime(config);
 };

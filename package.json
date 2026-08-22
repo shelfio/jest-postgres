@@ -2,7 +2,7 @@
   "name": "@shelf/jest-postgres",
   "version": "1.2.3",
   "private": false,
-  "description": "Run your tests using Jest & Postgres",
+  "description": "Run Jest tests with a local PostgreSQL instance",
   "keywords": [
     "jest",
     "jest environment",
@@ -39,15 +39,16 @@
     "lib/"
   ],
   "scripts": {
-    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' --out-file-extension '.cjs'",
+    "build": "rm -rf lib/ && pnpm build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' --out-file-extension '.cjs'",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "lint": "oxfmt && eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "oxfmt --check && eslint . --ext .js,.ts,.json",
-    "prepack": "yarn build",
+    "prepack": "pnpm build",
     "test": "jest",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "pnpm type-check -- --watch"
   },
+  "packageManager": "pnpm@11.8.0",
   "babel": {
     "extends": "@shelf/babel-config/backend"
   },
@@ -55,8 +56,9 @@
     "preset": "./jest-preset.cjs"
   },
   "dependencies": {
-    "@shelf/postgres-local": "1.1.2",
-    "cwd": "0.10.0"
+    "cwd": "0.10.0",
+    "debug": "4.3.4",
+    "postgres": "3.4.3"
   },
   "devDependencies": {
     "@babel/cli": "7.28.6",
@@ -66,6 +68,7 @@
     "@shelf/prettier-config": "1.1.1",
     "@shelf/tsconfig": "0.2.0",
     "@types/cwd": "0.10.2",
+    "@types/debug": "4.1.12",
     "@types/jest": "30.0.0",
     "@types/minimatch": "6",
     "@types/node": "25",
