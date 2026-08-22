@@ -1,10 +1,10 @@
-import {start} from '@shelf/postgres-local';
 import {getConfig} from './config';
+import {startPostgres as startPostgresRuntime} from './postgres';
 
-module.exports = async function startPostgres() {
+module.exports = async function setupPostgres() {
   const config = await getConfig();
 
-  await start(config);
+  await startPostgresRuntime(config);
 
   return true;
 };
