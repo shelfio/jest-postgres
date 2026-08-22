@@ -152,8 +152,8 @@ function startPostgresOnLinux({
   Pick<PostgresOptions, 'version' | 'port' | 'includeInstallation' | 'debugMode'>
 >): void {
   if (includeInstallation) {
-    run('sudo', ['apt', 'update'], debugMode);
-    run('sudo', ['apt', 'install', `postgresql-${version}`], debugMode);
+    run('sudo', ['apt-get', 'update'], debugMode);
+    run('sudo', ['apt-get', 'install', '--yes', `postgresql-${version}`], debugMode);
   }
 
   const postgresBinPath = `/usr/lib/postgresql/${version}/bin`;
