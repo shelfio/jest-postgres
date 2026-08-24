@@ -39,7 +39,7 @@
     "lib/"
   ],
   "scripts": {
-    "build": "rm -rf lib/ && pnpm build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' --out-file-extension '.cjs'",
+    "build": "rm -rf lib/ && pnpm build:types && esbuild src/index.ts src/setup.ts src/teardown.ts --bundle --platform=node --format=cjs --packages=external --outdir=lib --out-extension:.js=.cjs",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "lint": "oxfmt && eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "oxfmt --check && eslint . --ext .js,.ts,.json",
@@ -49,11 +49,21 @@
     "type-check:watch": "pnpm type-check -- --watch"
   },
   "packageManager": "pnpm@11.8.0",
-  "babel": {
-    "extends": "@shelf/babel-config/backend"
-  },
   "jest": {
-    "preset": "./jest-preset.cjs"
+    "preset": "./jest-preset.cjs",
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest",
+        {
+          "jsc": {
+            "parser": {
+              "syntax": "typescript"
+            }
+          },
+          "sourceMaps": false
+        }
+      ]
+    }
   },
   "dependencies": {
     "cwd": "0.10.0",
@@ -61,18 +71,18 @@
     "postgres": "3.4.3"
   },
   "devDependencies": {
-    "@babel/cli": "7.28.6",
-    "@babel/core": "7.29.0",
-    "@shelf/babel-config": "3.0.0",
     "@shelf/eslint-config": "6.3.0",
     "@shelf/prettier-config": "1.1.1",
     "@shelf/tsconfig": "0.2.0",
+    "@swc/core": "1.15.47",
+    "@swc/jest": "0.2.39",
     "@types/cwd": "0.10.2",
     "@types/debug": "4.1.12",
     "@types/jest": "30.0.0",
     "@types/minimatch": "6",
     "@types/node": "25",
     "cwd": "0.10.0",
+    "esbuild": "0.28.2",
     "eslint": "10.1.0",
     "husky": "9.1.7",
     "jest": "30.3.0",

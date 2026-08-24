@@ -5,4 +5,6 @@ minimumReleaseAge: 20160
 verifyDepsBeforeRun: false
 
 allowBuilds:
+  '@swc/core': true
+  esbuild: true
   unrs-resolver: false
