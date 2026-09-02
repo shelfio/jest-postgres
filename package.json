@@ -90,7 +90,7 @@
     "lint-staged": "16.4.0",
     "oxfmt": "0.42.0",
     "pg": "8.20.0",
-    "typescript": "5.3.3"
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "jest-environment-node": "27.x.x || 28.x || 29.x",
