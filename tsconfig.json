@@ -1,6 +1,7 @@
 {
   "extends": "@shelf/tsconfig/backend",
   "compilerOptions": {
+    "rootDir": "./src",
     "strict": true
   },
   "exclude": ["node_modules"],
