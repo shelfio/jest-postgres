@@ -41,6 +41,7 @@
   "scripts": {
     "build": "rm -rf lib/ && pnpm build:types && esbuild src/index.ts src/setup.ts src/teardown.ts --bundle --platform=node --format=cjs --packages=external --outdir=lib --out-extension:.js=.cjs",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
+    "find-deadcode": "knip --no-progress",
     "lint": "oxfmt && eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "oxfmt --check && eslint . --ext .js,.ts,.json",
     "prepack": "pnpm build",
@@ -87,6 +88,7 @@
     "husky": "9.1.7",
     "jest": "30.3.0",
     "knex": "3.2.6",
+    "knip": "6.38.0",
     "lint-staged": "16.4.0",
     "oxfmt": "0.42.0",
     "pg": "8.20.0",
