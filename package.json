@@ -50,7 +50,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm type-check -- --watch"
   },
-  "packageManager": "pnpm@11.8.0",
+  "packageManager": "pnpm@12.6.0",
   "jest": {
     "preset": "./jest-preset.cjs",
     "transform": {
