@@ -110,8 +110,8 @@
       "oxfmt --no-error-on-unmatched-pattern"
     ],
     "*.{ts,js,json}": [
-      "oxfmt --no-error-on-unmatched-pattern",
-      "eslint --fix"
+      "eslint --fix",
+      "oxfmt --no-error-on-unmatched-pattern"
     ]
   }
 }
