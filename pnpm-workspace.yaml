@@ -8,3 +8,4 @@ allowBuilds:
   '@swc/core': true
   esbuild: true
   unrs-resolver: false
+pmOnFail: ignore
