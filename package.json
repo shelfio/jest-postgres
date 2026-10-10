@@ -81,7 +81,6 @@
     "@types/cwd": "0.10.2",
     "@types/debug": "4.1.12",
     "@types/jest": "30.0.0",
-    "@types/minimatch": "6",
     "@types/node": "25",
     "cwd": "0.10.0",
     "esbuild": "0.28.2",
