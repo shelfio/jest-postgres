@@ -82,6 +82,7 @@
     "@types/debug": "4.1.12",
     "@types/jest": "30.0.0",
     "@types/node": "25",
+    "@typescript/native": "npm:typescript@7.0.2",
     "esbuild": "0.28.2",
     "eslint": "10.1.0",
     "husky": "9.1.7",
@@ -91,7 +92,7 @@
     "lint-staged": "16.4.0",
     "oxfmt": "0.42.0",
     "pg": "8.20.0",
-    "typescript": "6.0.3"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
     "jest-environment-node": "27.x.x || 28.x || 29.x",
