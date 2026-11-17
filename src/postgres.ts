@@ -6,6 +6,7 @@ import postgres from 'postgres';
 import type {ExecFileSyncOptions} from 'child_process';
 
 const debug = getDebug('jest-postgres');
+const DEFAULT_POSTGRES_VERSION = 18;
 const POSTGRES_TEMP_PATH = '/tmp/jest-postgres';
 const POSTGRES_DATA_PATH = `${POSTGRES_TEMP_PATH}/data`;
 const POSTGRES_LOG_PATH = `${POSTGRES_TEMP_PATH}/logfile`;
@@ -22,7 +23,7 @@ type PostgresOptions = {
 export async function startPostgres(options: PostgresOptions): Promise<string> {
   const {
     seedPath,
-    version = 17,
+    version = DEFAULT_POSTGRES_VERSION,
     port = 5555,
     includeInstallation = false,
     debugMode = false,
@@ -60,7 +61,10 @@ export async function startPostgres(options: PostgresOptions): Promise<string> {
   }
 }
 
-export function stopPostgres({version = 17, debugMode = false}: PostgresOptions): void {
+export function stopPostgres({
+  version = DEFAULT_POSTGRES_VERSION,
+  debugMode = false,
+}: PostgresOptions): void {
   switch (platform()) {
     case 'darwin': {
       try {

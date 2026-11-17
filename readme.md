@@ -29,14 +29,14 @@ const cwd = require('cwd');
 
 module.exports = {
   seedPath: `${cwd()}/test/seed.sql`,
-  version: 14,
+  version: 18,
   port: 5555,
   includeInstallation: false,
   debugMode: false,
 };
 ```
 
-The preset starts and stops PostgreSQL and applies the optional seed file. Set `includeInstallation` to
+The default server version is 18. The preset starts and stops PostgreSQL and applies the optional seed file. Set `includeInstallation` to
 `true` to install the selected PostgreSQL version with Homebrew or apt. Set `debugMode` to `true` to
 stream command output. No separate local PostgreSQL package is required.
 
