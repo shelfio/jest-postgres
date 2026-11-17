@@ -13,6 +13,7 @@ describe('#getClient', () => {
     const {rows} = await client.raw(
       "SELECT current_setting('server_version_num')::integer AS version"
     );
+
     expect(Math.trunc(rows[0].version / 10000)).toBe(18);
 
     await client.withSchema('test').table('model1').insert({
